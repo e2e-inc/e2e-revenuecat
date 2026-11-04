@@ -43,7 +43,7 @@ export function useSubscription(customer: string | undefined) {
         setCustomerId(id);
         setError(null);
       } catch (e) {
-        if (current) setError(`Couldn't load the plan from RevenueCat: ${e instanceof Error ? e.message : String(e)}.`);
+        if (current) setError(`couldn't load the plan from RevenueCat: ${e instanceof Error ? e.message : String(e)}.`);
       }
     })();
 

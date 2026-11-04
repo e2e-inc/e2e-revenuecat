@@ -2,15 +2,15 @@
 
 An Expo app that makes real in-app purchases through RevenueCat's Test Store, used as an example of end-to-end testing a purchase flow you don't own, on iOS and Android, with [e2e](https://www.npmjs.com/package/e2e).
 
-<img src="docs/screenshot.png" alt="The app's screen with the monthly plan at $9.99 and a Subscribe button" width="320">
+<img src="docs/screenshot.png" alt="The app's screen with the monthly plan at $9.99 and a subscribe button" width="320">
 
 ## How it works
 
 The app uses RevenueCat's paywall, the flow RevenueCat recommends, and its Test Store, so no App Store Connect or Google Play setup is needed:
 
-- **Plan screen** (`src/app/index.tsx`) shows the monthly plan from RevenueCat's current offering and a Subscribe button.
+- **Plan screen** (`src/app/index.tsx`) shows the monthly plan from RevenueCat's current offering and a subscribe button.
 - **RevenueCat's paywall** (`RevenueCatUI.presentPaywall`) opens over the app as a native screen RevenueCat draws. Its Purchase button opens the **Test Store dialog**.
-- **Back on the plan screen**, the app asks RevenueCat for the customer's entitlement instead of trusting the paywall's result, and shows Subscribed, or "Paywall closed. Nothing was charged."
+- **Back on the plan screen**, the app asks RevenueCat for the customer's entitlement instead of trusting the paywall's result, and shows subscribed, or "paywall closed. nothing was charged."
 
 A link signs in as a RevenueCat customer: `e2erevenuecat:///?customer=<id>`. The tests open it to start every test as a new customer, and a fresh install that opens it gets the subscription back. Without it, the app uses RevenueCat's anonymous id.
 
@@ -20,7 +20,7 @@ There is no backend: RevenueCat keeps the purchases. The SDK setup is in `src/li
 
 | Button in the dialog   | Result                                                                      |
 | ---------------------- | --------------------------------------------------------------------------- |
-| `Test valid purchase`  | Subscribed. A Test Store month lasts 5 minutes; it renews up to 5 times     |
+| `Test valid purchase`  | "subscribed". A Test Store month lasts 5 minutes; it renews up to 5 times   |
 | `Test failed purchase` | The purchase fails; Android shows the error, iOS returns to the paywall     |
 | `Cancel`               | Back to the paywall                                                         |
 

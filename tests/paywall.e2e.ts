@@ -5,7 +5,7 @@ import { expect } from 'e2e';
 import { customerLink, skip, test } from './fixtures';
 import type { RevenueCat } from './revenuecat';
 
-const CLOSED = 'Paywall closed. Nothing was charged.';
+const CLOSED = 'paywall closed. nothing was charged.';
 const FIVE_MINUTES = 5 * 60_000;
 
 // From our Subscribe button to RevenueCat's Test Store dialog for the monthly plan.
@@ -26,7 +26,7 @@ describe('paywall', { tags: ['paywall'], skip, retries: 2, timeout: 180_000 }, (
     await openTestStoreDialog(agent, screen);
 
     await agent.act('tap Test valid purchase in the Test Store dialog');
-    await expect(screen.getByTestId('subscription-status')).toHaveText('Subscribed', { timeout: 30_000 });
+    await expect(screen.getByTestId('subscription-status')).toHaveText('subscribed', { timeout: 30_000 });
     await expect(screen.getByTestId('subscription-renewal')).toBeVisible();
 
     const [subscription, ...others] = await revenuecat.subscriptions(customer);
@@ -65,7 +65,7 @@ describe('paywall', { tags: ['paywall'], skip, retries: 2, timeout: 180_000 }, (
 
       await agent.act('close the paywall');
       await expect(screen.getByTestId('paywall-notice')).toHaveText(CLOSED);
-      await expect(screen.getByTestId('subscription-status')).toHaveText('Not subscribed');
+      await expect(screen.getByTestId('subscription-status')).toHaveText('not subscribed');
       await expectNothingBought(revenuecat, customer);
     },
   );
@@ -78,7 +78,7 @@ describe('paywall', { tags: ['paywall'], skip, retries: 2, timeout: 180_000 }, (
 
     await agent.act('close the paywall');
     await expect(screen.getByTestId('paywall-notice')).toHaveText(CLOSED);
-    await expect(screen.getByTestId('subscription-status')).toHaveText('Not subscribed');
+    await expect(screen.getByTestId('subscription-status')).toHaveText('not subscribed');
     await expectNothingBought(revenuecat, customer);
   });
 
@@ -88,7 +88,7 @@ describe('paywall', { tags: ['paywall'], skip, retries: 2, timeout: 180_000 }, (
 
     await agent.act('close the paywall');
     await expect(screen.getByTestId('paywall-notice')).toHaveText(CLOSED);
-    await expect(screen.getByTestId('subscription-status')).toHaveText('Not subscribed');
+    await expect(screen.getByTestId('subscription-status')).toHaveText('not subscribed');
     await expectNothingBought(revenuecat, customer);
   });
 
@@ -102,13 +102,13 @@ describe('paywall', { tags: ['paywall'], skip, retries: 2, timeout: 180_000 }, (
   }) => {
     await openTestStoreDialog(agent, screen);
     await agent.act('tap Test valid purchase in the Test Store dialog');
-    await expect(screen.getByTestId('subscription-status')).toHaveText('Subscribed', { timeout: 30_000 });
+    await expect(screen.getByTestId('subscription-status')).toHaveText('subscribed', { timeout: 30_000 });
 
     // The Test Store can't restore purchases on a fresh install; signing in as the same customer does.
     await app.clearState();
     await device.openLink(customerLink(customer));
     await expect(screen.getByTestId('customer-id')).toHaveText(customer, { timeout: 30_000 });
-    await expect(screen.getByTestId('subscription-status')).toHaveText('Subscribed');
+    await expect(screen.getByTestId('subscription-status')).toHaveText('subscribed');
     await expect(screen.getByTestId('subscribe')).toBeHidden();
 
     expect(await revenuecat.subscriptions(customer)).toHaveLength(1);

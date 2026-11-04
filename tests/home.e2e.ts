@@ -17,7 +17,7 @@ test(
   { skip: skipRevenueCat },
   async ({ screen, revenuecat, customer }) => {
     await expect(screen.getByTestId('plan-price')).toHaveText('$9.99 / month');
-    await expect(screen.getByTestId('subscription-status')).toHaveText('Not subscribed');
+    await expect(screen.getByTestId('subscription-status')).toHaveText('not subscribed');
 
     // The app's logIn created the customer in RevenueCat.
     await expect.poll(() => revenuecat.customer(customer), { timeout: 15_000 }).not.toBeNull();

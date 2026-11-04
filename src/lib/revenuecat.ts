@@ -8,9 +8,9 @@ LogBox.ignoreLogs(['[RevenueCat]']);
 
 /** Why the app can't talk to RevenueCat, or null when it can. */
 export function keyProblem(): string | null {
-  if (!apiKey) return 'Set EXPO_PUBLIC_REVENUECAT_API_KEY to your RevenueCat Test Store key.';
+  if (!apiKey) return 'set EXPO_PUBLIC_REVENUECAT_API_KEY to your RevenueCat Test Store key.';
   // Only a Test Store key: any other key would reach a real store.
-  if (!apiKey.startsWith('test_')) return 'This demo only runs with a RevenueCat Test Store key (test_…).';
+  if (!apiKey.startsWith('test_')) return 'this demo only runs with a RevenueCat Test Store key (test_…).';
   return null;
 }
 

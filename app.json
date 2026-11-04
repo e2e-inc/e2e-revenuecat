@@ -7,7 +7,7 @@
     "icon": "./assets/images/icon.png",
     "scheme": "e2erevenuecat",
     "userInterfaceStyle": "dark",
-    "backgroundColor": "#111111",
+    "backgroundColor": "#000000",
     "ios": {
       "bundleIdentifier": "dev.e2e.revenuecat",
       "supportsTablet": false
@@ -15,7 +15,7 @@
     "android": {
       "package": "dev.e2e.revenuecat",
       "adaptiveIcon": {
-        "backgroundColor": "#111111",
+        "backgroundColor": "#1A5FFF",
         "foregroundImage": "./assets/images/adaptive-icon.png"
       },
       "predictiveBackGestureEnabled": false
@@ -25,9 +25,9 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#111111",
-          "image": "./assets/images/e2e-mark.png",
-          "imageWidth": 76
+          "backgroundColor": "#000000",
+          "image": "./assets/images/splash-sign.png",
+          "imageWidth": 48
         }
       ],
       [
@@ -35,32 +35,19 @@
         {
           "ios": {
             "fonts": [
-              "./assets/fonts/Inter_400Regular.ttf",
-              "./assets/fonts/Inter_500Medium.ttf",
-              "./assets/fonts/DMMono_400Regular.ttf",
-              "./assets/fonts/DMMono_500Medium.ttf",
-              "./assets/fonts/StackSansNotch_400Regular.ttf"
+              "./assets/fonts/JetBrainsMono_400Regular.ttf"
             ]
           },
           "android": {
             "fonts": [
               {
-                "fontFamily": "Inter",
+                "fontFamily": "JetBrains Mono",
                 "fontDefinitions": [
-                  { "path": "./assets/fonts/Inter_400Regular.ttf", "weight": 400 },
-                  { "path": "./assets/fonts/Inter_500Medium.ttf", "weight": 500 }
+                  {
+                    "path": "./assets/fonts/JetBrainsMono_400Regular.ttf",
+                    "weight": 400
+                  }
                 ]
-              },
-              {
-                "fontFamily": "DM Mono",
-                "fontDefinitions": [
-                  { "path": "./assets/fonts/DMMono_400Regular.ttf", "weight": 400 },
-                  { "path": "./assets/fonts/DMMono_500Medium.ttf", "weight": 500 }
-                ]
-              },
-              {
-                "fontFamily": "Stack Sans Notch",
-                "fontDefinitions": [{ "path": "./assets/fonts/StackSansNotch_400Regular.ttf", "weight": 400 }]
               }
             ]
           }
