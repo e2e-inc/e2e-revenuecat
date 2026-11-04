@@ -8,14 +8,14 @@ type ButtonProps = Omit<PressableProps, 'children' | 'style'> & {
 };
 
 // e2e buttons change no colour when pressed: they dim instead.
-export function Button({ label, variant = 'primary', disabled, ...props }: ButtonProps) {
+export function Button({ label, variant = 'primary', disabled, accessibilityState, ...props }: ButtonProps) {
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ disabled: Boolean(disabled) }}
+      {...props}
+      accessibilityState={{ ...accessibilityState, disabled: Boolean(disabled) }}
       disabled={disabled}
-      style={({ pressed }) => [styles.button, styles[variant], pressed && styles.pressed, disabled && styles.disabled]}
-      {...props}>
+      style={({ pressed }) => [styles.button, styles[variant], pressed && styles.pressed, disabled && styles.disabled]}>
       <Text style={[type.monoM, variant === 'light' ? styles.labelOnLight : styles.label]}>{label}</Text>
     </Pressable>
   );
