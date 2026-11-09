@@ -42,7 +42,6 @@ example
 /ios
 /android
 .e2e/results/
-.e2e/cache/
 .e2e/sessions/
 .e2e/report.json
 .e2e/ai-trace.json
